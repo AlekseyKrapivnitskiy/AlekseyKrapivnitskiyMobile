@@ -23,4 +23,17 @@ public class DriverSetup {
 
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
     }
+
+    protected void prepareAndroidWeb() throws MalformedURLException {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        //mandatory Android capabilities
+        capabilities.setCapability("deviceName","emulator-5554");
+        capabilities.setCapability("platformName","Android");
+
+        //specific web capabilities
+        capabilities.setCapability("browserName", "Chrome");
+
+        //init driver for local Appium server with capabilities have been set
+        driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+    }
 }
