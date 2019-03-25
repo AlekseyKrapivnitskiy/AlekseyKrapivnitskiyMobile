@@ -5,7 +5,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class FirstSimpleTest extends DriverSetup{
+public class FirstSimpleTest extends DriverSetup {
 
     @BeforeClass
     public void setUp() throws Exception {
@@ -13,7 +13,7 @@ public class FirstSimpleTest extends DriverSetup{
     }
 
     @Test
-    public void SimplestTest(){
+    public void SimplestTest() {
         String app_package_name = "com.example.android.contactmanager:id/";
         By add_btn = By.id(app_package_name + "addContactButton");
         driver.findElement(add_btn).click();
