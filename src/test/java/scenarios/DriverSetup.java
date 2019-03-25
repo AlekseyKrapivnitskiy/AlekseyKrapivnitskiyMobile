@@ -11,7 +11,7 @@ public class DriverSetup {
 
     protected AndroidDriver driver;
 
-    protected void prepareNative() throws MalformedURLException { // exception required by java.net.URL
+    protected void prepareNative() throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("deviceName","emulator-5554");
         capabilities.setCapability("platformName","Android");
@@ -23,5 +23,4 @@ public class DriverSetup {
 
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
     }
-
 }
