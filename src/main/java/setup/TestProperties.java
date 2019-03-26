@@ -8,7 +8,7 @@ public class TestProperties {
     Properties currentProps = new Properties();
 
     Properties getCurrentProps() throws IOException {
-        FileInputStream in = new FileInputStream(System.getProperty("user.dir")+"/src/main/resources/test.properties");
+        FileInputStream in = new FileInputStream(System.getProperty("user.dir")+"/src/main/resources/webtest.properties");
         currentProps.load(in);
         in.close();
         return currentProps;

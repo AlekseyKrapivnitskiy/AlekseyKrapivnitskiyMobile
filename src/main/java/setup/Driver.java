@@ -16,8 +16,10 @@ import java.net.URL;
 
 public class Driver extends TestProperties {
     protected AppiumDriver driver;
+    private static AppiumDriver driverSingle = null;
     protected DesiredCapabilities capabilities;
     protected WebDriverWait wait;
+    private static WebDriverWait waitSingle;
 
     // Properties to be read
     protected String AUT; // (mobile) app under testing
@@ -58,18 +60,32 @@ public class Driver extends TestProperties {
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, TEST_PLATFORM);
 
         // Setup type of application: mobile, web (or hybrid)
-        if (AUT != null && SUT == null) {
+        if(AUT != null && SUT == null){
             // Native
             File app = new File(AUT);
             capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
-        } else if (SUT != null && AUT == null) {
+        } else if(SUT != null && AUT == null){
             // Web
             capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, browserName);
-        } else {
+        } else{
             throw new Exception("Unclear type of mobile app");
         }
 
         // Init driver for local Appium server with capabilities have been set
         driver = new AppiumDriver(new URL(DRIVER), capabilities);
+
+        // Init driver for local Appium server with capabilities have been set
+        if(driverSingle == null) driverSingle = new AppiumDriver(new URL(DRIVER), capabilities);
+        // Set an object to handle timeouts
+        if(waitSingle == null) waitSingle = new WebDriverWait(driver(), 10);
+    }
+
+    protected AppiumDriver driver() throws Exception {
+        if(driverSingle == null) prepareDriver();
+        return driverSingle;
+    }
+
+    protected WebDriverWait driverWait() throws Exception {
+        return waitSingle;
     }
 }
