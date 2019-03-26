@@ -61,7 +61,7 @@ public class Driver extends TestProperties {
 
         // Setup type of application: mobile, web (or hybrid)
         if(AUT != null && SUT == null){
-            // Native
+            // Native
             File app = new File(AUT);
             capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
         } else if(SUT != null && AUT == null){
