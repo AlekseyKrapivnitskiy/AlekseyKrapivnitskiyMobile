@@ -6,9 +6,11 @@ import java.util.Properties;
 
 public class TestProperties {
     Properties currentProps = new Properties();
+    Properties nativeProps = new Properties();
+    Properties webProps = new Properties();
 
     Properties getCurrentProps() throws IOException {
-        FileInputStream in = new FileInputStream(System.getProperty("user.dir"));
+        FileInputStream in = new FileInputStream(System.getProperty("user.dir") + "/test.properties");
         currentProps.load(in);
         in.close();
         return currentProps;
