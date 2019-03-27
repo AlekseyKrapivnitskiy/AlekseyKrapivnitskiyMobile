@@ -9,16 +9,17 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
+import static setup.PropertyFile.NATIVE_TESTS_PROPERTIES;
+import static setup.PropertyFile.WEB_TESTS_PROPERTIES;
+
 /**
  *
  * Initialize a driver with test properties
  */
 
 public class Driver extends TestProperties {
-    protected AppiumDriver driver;
     private static AppiumDriver driverSingle = null;
     protected DesiredCapabilities capabilities;
-    protected WebDriverWait wait;
     private static WebDriverWait waitSingle;
 
     // Properties to be read
@@ -29,11 +30,19 @@ public class Driver extends TestProperties {
 
     // Constructor initializes properties on driver creation
     protected Driver() throws IOException {
-        AUT = getProp("aut");
-        String t_sut = getProp("sut");
+        AUT = getProp(NATIVE_TESTS_PROPERTIES, "aut");
+        String t_sut = getProp(WEB_TESTS_PROPERTIES, "sut");
         SUT = t_sut == null ? null : "http://" + t_sut;
-        TEST_PLATFORM = getProp("platform");
-        DRIVER = getProp("driver");
+
+        if(AUT != null && SUT == null){
+            // Native
+            TEST_PLATFORM = getProp(NATIVE_TESTS_PROPERTIES, "platform");
+            DRIVER = getProp(NATIVE_TESTS_PROPERTIES, "driver");
+        } else if(SUT != null && AUT == null){
+            // Web
+            TEST_PLATFORM = getProp(WEB_TESTS_PROPERTIES, "platform");
+            DRIVER = getProp(WEB_TESTS_PROPERTIES, "driver");
+        }
     }
 
     /**
