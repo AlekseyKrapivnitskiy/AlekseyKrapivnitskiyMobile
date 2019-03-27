@@ -72,9 +72,6 @@ public class Driver extends TestProperties {
         }
 
         // Init driver for local Appium server with capabilities have been set
-        driver = new AppiumDriver(new URL(DRIVER), capabilities);
-
-        // Init driver for local Appium server with capabilities have been set
         if(driverSingle == null) driverSingle = new AppiumDriver(new URL(DRIVER), capabilities);
         // Set an object to handle timeouts
         if(waitSingle == null) waitSingle = new WebDriverWait(driver(), 10);

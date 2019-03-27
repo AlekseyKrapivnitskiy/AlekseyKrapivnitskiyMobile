@@ -13,10 +13,10 @@ public class SimpleNativeTests extends Driver {
     }
 
     @Test(description = "Just click on button 'Add contact'")
-    public void simplestTest(){
+    public void simplestTest() throws Exception {
         String app_package_name = "com.example.android.contactmanager:id/";
         By add_btn = By.id(app_package_name + "addContactButton");
-        driver.findElement(add_btn).click();
+        driver().findElement(add_btn).click();
         // The result of clicking doesn't checked.
         System.out.println("Simplest Appium test done");
     }
