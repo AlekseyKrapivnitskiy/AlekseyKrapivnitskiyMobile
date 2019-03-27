@@ -29,7 +29,7 @@ public class Driver extends TestProperties {
 
     // Constructor initializes properties on driver creation
     protected Driver() throws IOException {
-        AUT = getProp(NATIVE_TEST_PROPERTIES, "aut");
+     //   AUT = getProp(NATIVE_TEST_PROPERTIES, "aut");
         String t_sut = getProp(WEB_TEST_PROPERTIES, "sut");
         SUT = t_sut == null ? null : "http://" + t_sut;
         TEST_PLATFORM = getProp(NATIVE_TEST_PROPERTIES, "platform");

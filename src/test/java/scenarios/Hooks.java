@@ -7,7 +7,7 @@ import setup.Driver;
 
 import java.io.IOException;
 
-@Test(groups = {"native","web"})
+@Test(groups = {"native", "web"})
 public class Hooks extends Driver {
 
     /**
