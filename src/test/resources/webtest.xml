@@ -2,14 +2,18 @@
 
 <suite name="Test Suite for Web Mobile Tests" verbose="1">
 
-    <groups>
-        <run>
-            <include name="web"/>
-        </run>
-    </groups>
+    <test name="iana.org Web Test">
 
-    <packages>
-        <package name="scenarios.webtests"/>
-    </packages>
+        <groups>
+            <run>
+                <include name="web"/>
+            </run>
+        </groups>
+
+        <packages>
+            <package name="scenarios.webtests"/>
+        </packages>
+
+    </test>
 
 </suite>
