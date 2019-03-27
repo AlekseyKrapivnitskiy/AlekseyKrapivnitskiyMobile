@@ -10,9 +10,9 @@
             </run>
         </groups>
 
-        <classes>
-            <class name="scenarios.nativetests.SimpleNativeTests"/>
-        </classes>
+        <packages>
+            <package name="scenarios.nativetests"/>
+        </packages>
 
     </test>
 
