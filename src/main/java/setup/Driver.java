@@ -31,7 +31,7 @@ public class Driver extends TestProperties {
     protected Driver() throws IOException {
         AUT = getProp(NATIVE_TEST_PROPERTIES, "aut");
         String t_sut = getProp(WEB_TEST_PROPERTIES, "sut");
-     //   SUT = t_sut == null ? null : "http://" + t_sut;
+        SUT = t_sut == null ? null : "http://" + t_sut;
         TEST_PLATFORM = getProp(NATIVE_TEST_PROPERTIES, "platform");
         DRIVER = getProp(NATIVE_TEST_PROPERTIES, "driver");
     }
