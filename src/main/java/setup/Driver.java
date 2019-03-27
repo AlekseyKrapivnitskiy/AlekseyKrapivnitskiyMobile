@@ -5,12 +5,12 @@ import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.awt.font.GlyphJustificationInfo;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
-import static setup.PropertyFile.NATIVE_TESTS_PROPERTIES;
-import static setup.PropertyFile.WEB_TESTS_PROPERTIES;
+import static setup.PropertyFile.*;
 
 /**
  *
@@ -30,19 +30,11 @@ public class Driver extends TestProperties {
 
     // Constructor initializes properties on driver creation
     protected Driver() throws IOException {
-        AUT = getProp(NATIVE_TESTS_PROPERTIES, "aut");
-        String t_sut = getProp(WEB_TESTS_PROPERTIES, "sut");
+        AUT = getProp(NATIVE_TEST_PROPERTIES, "aut");
+        String t_sut = getProp(WEB_TEST_PROPERTIES, "sut");
         SUT = t_sut == null ? null : "http://" + t_sut;
-
-        if(AUT != null && SUT == null){
-            // Native
-            TEST_PLATFORM = getProp(NATIVE_TESTS_PROPERTIES, "platform");
-            DRIVER = getProp(NATIVE_TESTS_PROPERTIES, "driver");
-        } else if(SUT != null && AUT == null){
-            // Web
-            TEST_PLATFORM = getProp(WEB_TESTS_PROPERTIES, "platform");
-            DRIVER = getProp(WEB_TESTS_PROPERTIES, "driver");
-        }
+        TEST_PLATFORM = getProp(GLOBAL_TEST_PROPERTIES, "platform");
+        DRIVER = getProp(GLOBAL_TEST_PROPERTIES, "driver");
     }
 
     /**
