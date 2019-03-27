@@ -2,12 +2,12 @@ package scenarios.nativetests;
 
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
-import setup.Driver;
+import scenarios.Hooks;
 
 import java.io.IOException;
 
 @Test(groups = "native")
-public class SimpleNativeTests extends Driver {
+public class SimpleNativeTests extends Hooks {
     protected SimpleNativeTests() throws IOException {
         super();
     }

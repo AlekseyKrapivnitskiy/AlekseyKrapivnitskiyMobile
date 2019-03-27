@@ -2,12 +2,12 @@ package scenarios.webtests;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
-import setup.Driver;
+import scenarios.Hooks;
 
 import java.io.IOException;
 
 @Test(groups = "web")
-public class SimpleWebTests extends Driver {
+public class SimpleWebTests extends Hooks {
     protected SimpleWebTests() throws IOException {
         super();
     }

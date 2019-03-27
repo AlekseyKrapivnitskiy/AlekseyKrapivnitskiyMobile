@@ -14,7 +14,7 @@ public class Hooks extends Driver {
      * Required variables will be initialized by inherited constructor
      * @throws IOException
      */
-    Hooks() throws IOException {
+    protected Hooks() throws IOException {
         super();
     }
 
