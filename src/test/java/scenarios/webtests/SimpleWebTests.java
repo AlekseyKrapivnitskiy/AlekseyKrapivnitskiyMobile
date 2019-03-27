@@ -15,7 +15,7 @@ public class SimpleWebTests extends Driver {
     @Test(description = "Open website")
     public void webTest() throws Exception {
         driver().get(SUT);
-        driverWait().until(ExpectedConditions.urlToBe(SUT+"/"));
+        driverWait().until(ExpectedConditions.urlToBe(SUT + "/"));
         System.out.println("Site opening done");
     }
 }
