@@ -1,0 +1,7 @@
+To run native test:
+    1.Click on nativetest.xml file by right mouse button.
+    2.Click on: Run '.../src/test/resources/nativetest.xml'.
+
+To run web test:
+    1.Click on webtest.xml file by right mouse button.
+    2.Click on: Run '.../src/test/resources/webtest.xml'
