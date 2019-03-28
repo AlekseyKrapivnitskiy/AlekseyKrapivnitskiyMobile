@@ -2,6 +2,8 @@
 
 <suite name="Test Suite for Web Mobile Tests" verbose="1">
 
+    <parameter name="testType" value="WEB_TEST_PROPERTIES"/>
+
     <test name="iana.org Web Test">
 
         <groups>

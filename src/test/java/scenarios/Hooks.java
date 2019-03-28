@@ -2,8 +2,10 @@ package scenarios;
 
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import setup.Driver;
+import setup.PropertyFile;
 
 import java.io.IOException;
 
@@ -18,9 +20,10 @@ public class Hooks extends Driver {
         super();
     }
 
+    @Parameters(value = {"testType"})
     @BeforeSuite(description = "Prepare driver to run test(s)")
-    public void setUp() throws Exception {
-        prepareDriver();
+    public void setUp(String testType) throws Exception {
+        prepareDriver(PropertyFile.valueOf(testType));
         System.out.println("Driver prepared");
     }
 

@@ -2,6 +2,8 @@
 
 <suite name="Test Suite for Native Mobile Tests" verbose="1">
 
+    <parameter name="testType" value="NATIVE_TEST_PROPERTIES"/>
+
     <test name="Contact Manager Test">
 
         <groups>

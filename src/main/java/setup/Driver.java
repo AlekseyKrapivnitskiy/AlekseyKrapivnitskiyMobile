@@ -27,13 +27,8 @@ public class Driver extends TestProperties {
     protected String TEST_PLATFORM;
     protected String DRIVER;
 
-    // Constructor initializes properties on driver creation
+    // Constructor for driver
     protected Driver() throws IOException {
-        AUT = getProp(NATIVE_TEST_PROPERTIES, "aut");
-        String t_sut = getProp(WEB_TEST_PROPERTIES, "sut");
-        SUT = t_sut == null ? null : "http://" + t_sut;
-        TEST_PLATFORM = getProp(NATIVE_TEST_PROPERTIES, "platform");
-        DRIVER = getProp(NATIVE_TEST_PROPERTIES, "driver");
     }
 
     /**
@@ -41,9 +36,21 @@ public class Driver extends TestProperties {
      *
      * @throws Exception
      */
-    protected void prepareDriver() throws Exception {
+    protected void prepareDriver(PropertyFile propertyFile) throws Exception {
         capabilities = new DesiredCapabilities();
         String browserName;
+
+        // Get Test Properties according to test type
+        if(propertyFile == WEB_TEST_PROPERTIES) {
+            String t_sut = getProp(WEB_TEST_PROPERTIES, "sut");
+            SUT = t_sut == null ? null : "http://" + t_sut;
+            TEST_PLATFORM = getProp(WEB_TEST_PROPERTIES, "platform");
+            DRIVER = getProp(WEB_TEST_PROPERTIES, "driver");
+        } else {
+            AUT = getProp(NATIVE_TEST_PROPERTIES, "aut");
+            TEST_PLATFORM = getProp(NATIVE_TEST_PROPERTIES, "platform");
+            DRIVER = getProp(NATIVE_TEST_PROPERTIES, "driver");
+        }
 
         // Setup test platform: Android or iOS. Browser also depends on a platform.
         switch (TEST_PLATFORM) {
@@ -78,7 +85,6 @@ public class Driver extends TestProperties {
     }
 
     protected AppiumDriver driver() throws Exception {
-        if(driverSingle == null) prepareDriver();
         return driverSingle;
     }
 
