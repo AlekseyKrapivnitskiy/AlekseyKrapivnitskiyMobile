@@ -16,7 +16,7 @@ public class SimpleNativeTests extends Hooks {
 
     @Test(description = "Just click on button 'Add contact'")
     public void simplestTest() throws Exception {
-        //1.Assert that title of start page
+        //1.Assert title of start page
         assertEquals(driver().findElement(By.id("android:id/title")).getText(), "Contact Manager");
 
         //2.Click on 'Add Contact' button
