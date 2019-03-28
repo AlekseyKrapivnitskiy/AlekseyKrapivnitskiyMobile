@@ -1,4 +1,4 @@
-5.I did not change anything, tests works fine on my real device.
+5.I did not change anything, tests work fine on my real device.
 
 6.Required Actions:
     1)Start Appium Server.
