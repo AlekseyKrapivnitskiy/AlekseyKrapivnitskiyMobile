@@ -4,4 +4,4 @@ To run native test:
 
 To run web test:
     1.Click on webtest.xml file by right mouse button.
-    2.Click on: Run '.../src/test/resources/webtest.xml'
+    2.Click on: Run '.../src/test/resources/webtest.xml'.
