@@ -15,7 +15,7 @@ public class SimpleWebTests extends Hooks {
     @Test(description = "Open website")
     public void webTest() throws Exception {
         driver().get(SUT);
-        driverWait().until(ExpectedConditions.urlToBe(SUT + "/"));
+        driverWait().until(ExpectedConditions.urlContains(SUT + "/"));
         System.out.println("Site opening done");
     }
 }
