@@ -63,6 +63,7 @@ public class Driver extends TestProperties {
                 break;
             case "iOS":
                 browserName = "Safari";
+                capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, DEVICE_NAME);
                 break;
             default:
                 throw new Exception("Unknown mobile platform");
