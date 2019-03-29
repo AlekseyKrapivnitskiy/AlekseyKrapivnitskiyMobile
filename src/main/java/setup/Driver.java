@@ -55,12 +55,8 @@ public class Driver extends TestProperties {
             TEST_PLATFORM = getProp(NATIVE_TEST_PROPERTIES, "platform");
             DRIVER = getProp(NATIVE_TEST_PROPERTIES, "driver");
             UDID = getProp(NATIVE_TEST_PROPERTIES, "udid");
-
             APP_PACKAGE = getProp(NATIVE_TEST_PROPERTIES, "appPackage");
-            capabilities.setCapability("appPackage", APP_PACKAGE);
-
             APP_ACTIVITY = getProp(NATIVE_TEST_PROPERTIES, "appActivity");
-            capabilities.setCapability("appActivity", APP_ACTIVITY);
         }
 
         // Setup test platform: Android or iOS. Browser also depends on a platform.
@@ -83,6 +79,8 @@ public class Driver extends TestProperties {
             // Native
             File app = new File(AUT);
             capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
+            capabilities.setCapability("appPackage", APP_PACKAGE);
+            capabilities.setCapability("appActivity", APP_ACTIVITY);
         } else if(SUT != null && AUT == null){
             // Web
             capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, browserName);
