@@ -26,7 +26,7 @@ public class Driver extends TestProperties {
     protected String SUT; // site under testing
     protected String TEST_PLATFORM;
     protected String DRIVER;
-    protected String DEVICE_NAME;
+    protected String UUID;
 
     // Constructor for driver
     protected Driver() throws IOException {
@@ -47,23 +47,23 @@ public class Driver extends TestProperties {
             SUT = t_sut == null ? null : "http://" + t_sut;
             TEST_PLATFORM = getProp(WEB_TEST_PROPERTIES, "platform");
             DRIVER = getProp(WEB_TEST_PROPERTIES, "driver");
-            DEVICE_NAME = getProp(WEB_TEST_PROPERTIES, "deviceName");
+            UUID = getProp(WEB_TEST_PROPERTIES, "uuid");
         } else {
             AUT = getProp(NATIVE_TEST_PROPERTIES, "aut");
             TEST_PLATFORM = getProp(NATIVE_TEST_PROPERTIES, "platform");
             DRIVER = getProp(NATIVE_TEST_PROPERTIES, "driver");
-            DEVICE_NAME = getProp(NATIVE_TEST_PROPERTIES, "deviceName");
+            UUID = getProp(NATIVE_TEST_PROPERTIES, "uuid");
         }
 
         // Setup test platform: Android or iOS. Browser also depends on a platform.
         switch (TEST_PLATFORM) {
             case "Android":
-                capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, DEVICE_NAME); // default Android emulator
+                capabilities.setCapability(MobileCapabilityType.UDID, UUID); // default Android emulator
                 browserName = "Chrome";
                 break;
             case "iOS":
                 browserName = "Safari";
-                capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, DEVICE_NAME);
+                capabilities.setCapability(MobileCapabilityType.UDID, UUID);
                 break;
             default:
                 throw new Exception("Unknown mobile platform");
