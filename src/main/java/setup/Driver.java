@@ -26,7 +26,9 @@ public class Driver extends TestProperties {
     protected String SUT; // site under testing
     protected String TEST_PLATFORM;
     protected String DRIVER;
-    protected String UUID;
+    protected String UDID;
+    protected String APP_PACKAGE;
+    protected String APP_ACTIVITY;
 
     // Constructor for driver
     protected Driver() throws IOException {
@@ -47,28 +49,34 @@ public class Driver extends TestProperties {
             SUT = t_sut == null ? null : "http://" + t_sut;
             TEST_PLATFORM = getProp(WEB_TEST_PROPERTIES, "platform");
             DRIVER = getProp(WEB_TEST_PROPERTIES, "driver");
-            UUID = getProp(WEB_TEST_PROPERTIES, "uuid");
+            UDID = getProp(WEB_TEST_PROPERTIES, "udid");
         } else {
             AUT = getProp(NATIVE_TEST_PROPERTIES, "aut");
             TEST_PLATFORM = getProp(NATIVE_TEST_PROPERTIES, "platform");
             DRIVER = getProp(NATIVE_TEST_PROPERTIES, "driver");
-            UUID = getProp(NATIVE_TEST_PROPERTIES, "uuid");
+            UDID = getProp(NATIVE_TEST_PROPERTIES, "udid");
+
+            APP_PACKAGE = getProp(NATIVE_TEST_PROPERTIES, "appPackage");
+            capabilities.setCapability("appPackage", APP_PACKAGE);
+
+            APP_ACTIVITY = getProp(NATIVE_TEST_PROPERTIES, "appActivity");
+            capabilities.setCapability("appActivity", APP_ACTIVITY);
         }
 
         // Setup test platform: Android or iOS. Browser also depends on a platform.
         switch (TEST_PLATFORM) {
             case "Android":
-                capabilities.setCapability(MobileCapabilityType.UDID, UUID); // default Android emulator
                 browserName = "Chrome";
                 break;
             case "iOS":
                 browserName = "Safari";
-                capabilities.setCapability(MobileCapabilityType.UDID, UUID);
+                capabilities.setCapability(MobileCapabilityType.UDID, UDID);
                 break;
             default:
                 throw new Exception("Unknown mobile platform");
         }
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, TEST_PLATFORM);
+        capabilities.setCapability(MobileCapabilityType.UDID, UDID);
 
         // Setup type of application: mobile, web (or hybrid)
         if(AUT != null && SUT == null){
@@ -82,7 +90,7 @@ public class Driver extends TestProperties {
             throw new Exception("Unclear type of mobile app");
         }
 
-        // Init driver for local Appium server with capabilities have been set
+        // Init driver with capabilities have been set
         if(driverSingle == null) driverSingle = new AppiumDriver(new URL(DRIVER), capabilities);
         // Set an object to handle timeouts
         if(waitSingle == null) waitSingle = new WebDriverWait(driver(), 10);
