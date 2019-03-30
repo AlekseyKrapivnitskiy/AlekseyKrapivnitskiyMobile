@@ -3,3 +3,5 @@
     is ignored at this moment on http://mobilecloud.epam.com/ (see Application under test (for Appium test run) on
     http://mobilecloud.epam.com/#!/automation/ci)
 4.This approach does not work because "appPackage" and "appActivity" are mandatory capabilities on http://mobilecloud.epam.com/.
+5.If we are using http://mobilecloud.epam.com/ for native tests we need to install application first, I thing it's not
+    convenient. I found some Rest API that can allow us to install app by Rest request before running tests.
