@@ -1,0 +1,5 @@
+1.Test passed.
+3.Test did not pass. Need to install application to device before running test because Desired Capability "app"
+    is ignored at this moment on http://mobilecloud.epam.com/ (see Application under test (for Appium test run) on
+    http://mobilecloud.epam.com/#!/automation/ci)
+4.This approach does not work because "appPackage" and "appActivity" are mandatory capabilities on http://mobilecloud.epam.com/.
